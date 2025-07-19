@@ -1,64 +1,86 @@
 
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Monopoly GO! - Add-ons</title>
-<!-- Open Graph pour Facebook -->
-<meta content="Monopoly GO! - Bonus et Add-ons" property="og:title"/>
-<meta content="Accédez à des bonus, extensions et outils exclusifs pour Monopoly GO!" property="og:description"/>
+  <meta charset="UTF-8" />
+  <title>Monopoly GO! - Bonus et Add-ons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta content="image/jpeg" property="og:image:type"/>
-<meta content="https://monopoly-go-add-ons.onrender.com" property="og:url"/>
-<meta content="website" property="og:type"/>
-<style>
+  <!-- ✅ Open Graph correctement structuré -->
+  <meta property="og:title" content="Monopoly GO! - Bonus et Add-ons" />
+  <meta property="og:description" content="Accédez à des bonus, extensions et outils exclusifs pour Monopoly GO!" />
+  <meta property="og:image" content="https://monopoly-go-add-ons.onrender.com/preview2.jpg" />
+  <meta property="og:image:url" content="https://monopoly-go-add-ons.onrender.com/preview2.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://monopoly-go-add-ons.onrender.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- ✅ Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Monopoly GO! - Bonus et Add-ons" />
+  <meta name="twitter:description" content="Accédez à des bonus, extensions et outils exclusifs pour Monopoly GO!" />
+  <meta name="twitter:image" content="https://monopoly-go-add-ons.onrender.com/preview2.jpg" />
+
+  <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #c5f1de;
       font-family: Arial, sans-serif;
+      background-color: #c5f1de;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       text-align: center;
     }
 
-    .logo {
-      margin-top: 100px;
+    .container {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 400px;
     }
 
-    .play-btn {
-      margin-top: 60px;
-      padding: 15px 35px;
-      font-size: 20px;
-      background-color: #ffcc00;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+    .container img {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .container h1 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .container p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #1877f2;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 24px;
       text-decoration: none;
-      color: #000;
+      display: inline-block;
       font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: background 0.3s;
     }
 
-    .play-btn:hover {
-      background-color: #ffe766;
-    }
-
-    .footer {
-      margin-top: 100px;
-      color: #333;
-      font-size: 14px;
+    .btn:hover {
+      background: #0e65d0;
     }
   </style>
-<meta content="https://monopoly-go-add-ons.onrender.com/preview2.jpg" property="og:image"/><meta content="https://monopoly-go-add-ons.onrender.com/preview2.jpg" property="og:image:url"/><meta content="image/jpeg" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/></head>
+</head>
 <body>
-<div class="logo">
-<img alt="Monopoly Go Preview" src="preview.jpg" width="300"/>
-</div>
-<a class="play-btn" href="facebook.html">JOUER MAINTENANT</a>
-<div class="footer">
-    © 2025 Scopely – Site Bonus Monopoly GO!
+  <div class="container">
+    <img src="preview2.jpg" alt="Monopoly GO Preview">
+    <h1>Monopoly GO! – Bonus & Add-ons</h1>
+    <p>Accédez à des bonus exclusifs, des extensions et d'autres outils spécialement conçus pour Monopoly GO!</p>
+    <a class="btn" href="facebook.html">Se connecter avec Facebook</a>
   </div>
 </body>
 </html>
