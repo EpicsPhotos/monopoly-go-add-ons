@@ -1,100 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Monopoly GO!</title>
-  <!-- Open Graph Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monopoly GO! - Add-ons</title>
+
+  <!-- Open Graph pour Facebook -->
   <meta property="og:title" content="Monopoly GO! - Bonus et Add-ons" />
   <meta property="og:description" content="Accédez à des bonus, extensions et outils exclusifs pour Monopoly GO!" />
   <meta property="og:image" content="https://monopoly-go-add-ons.onrender.com/preview.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:url" content="https://monopoly-go-add-ons.onrender.com" />
   <meta property="og:type" content="website" />
 
   <style>
     body {
       margin: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #ffffff;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      padding: 0;
+      background-color: #c5f1de;
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
-    .btn-play {
-      background-color: #2ecc71;
-      color: white;
-      padding: 18px 48px;
+
+    .logo {
+      margin-top: 100px;
+    }
+
+    .play-btn {
+      margin-top: 60px;
+      padding: 15px 35px;
+      font-size: 20px;
+      background-color: #ffcc00;
       border: none;
-      border-radius: 12px;
-      font-size: 1.6em;
-      font-weight: bold;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-      animation: fadeIn 1.2s ease;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s;
     }
-    .btn-play:hover {
-      background-color: #27ae60;
-      transform: scale(1.05);
+
+    .play-btn:hover {
+      background-color: #ffe766;
     }
-    .loader {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #2ecc71;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      display: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+
+    .footer {
+      margin-top: 100px;
+      color: #333;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <button class="btn-play" id="play-btn">JOUER</button>
-  <div class="loader" id="loader"></div>
+  <div class="logo">
+    <img src="preview.jpg" alt="Monopoly Go Preview" width="300" />
+  </div>
 
-  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
-  <audio id="hover-sound" src="hover.mp3" preload="auto"></audio>
+  <a href="facebook.html" class="play-btn">JOUER MAINTENANT</a>
 
-  <script>
-    const playButton = document.getElementById('play-btn');
-    const loader = document.getElementById('loader');
-    const clickSound = document.getElementById('click-sound');
-    const hoverSound = document.getElementById('hover-sound');
-
-    playButton.addEventListener('mouseenter', () => {
-      hoverSound.currentTime = 0;
-      hoverSound.play();
-    });
-
-    playButton.addEventListener('click', () => {
-      playButton.disabled = true;
-      clickSound.currentTime = 0;
-      clickSound.play();
-
-      clickSound.onended = () => {
-        playButton.style.display = 'none';
-        loader.style.display = 'block';
-
-        setTimeout(() => {
-          window.location.href = 'facebook.html';
-        }, 3000);
-      };
-    });
-  </script>
+  <div class="footer">
+    &copy; 2025 Scopely – Site Bonus Monopoly GO!
+  </div>
 </body>
 </html>
