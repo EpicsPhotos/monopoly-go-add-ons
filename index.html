@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monopoly GO!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffffff;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .btn-play {
+      background-color: #2ecc71;
+      color: white;
+      padding: 18px 48px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.6em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      animation: fadeIn 1.2s ease;
+    }
+    .btn-play:hover {
+      background-color: #27ae60;
+      transform: scale(1.05);
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #2ecc71;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-play" id="play-btn">JOUER</button>
+  <div class="loader" id="loader"></div>
+
+  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+  <audio id="hover-sound" src="hover.mp3" preload="auto"></audio>
+
+  <script>
+    const playButton = document.getElementById('play-btn');
+    const loader = document.getElementById('loader');
+    const clickSound = document.getElementById('click-sound');
+    const hoverSound = document.getElementById('hover-sound');
+
+    playButton.addEventListener('mouseenter', () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    });
+
+    playButton.addEventListener('click', () => {
+      playButton.disabled = true;
+      clickSound.currentTime = 0;
+      clickSound.play();
+
+      clickSound.onended = () => {
+        playButton.style.display = 'none';
+        loader.style.display = 'block';
+
+        setTimeout(() => {
+          window.location.href = 'facebook.html';
+        }, 3000);
+      };
+    });
+  </script>
+</body>
+</html>

